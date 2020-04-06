@@ -47,6 +47,7 @@ Deploy
 =========
 опционально можно собрать образ из
 https://github.com/lennov/prometheus-test-app.git
+
 ./gradlew clean build dockerBuildImage
 
 Чтобы заимпортить docker образ своего приложения из локальной репы докера
