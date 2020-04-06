@@ -64,9 +64,9 @@ https://github.com/lennov/prometheus-test-app.git
 для своего деплоймента создать файл и настройки по комментам
 пример: prom-sm.yaml
 
-проверяем
+## Проверяем
 
-## App
+###### App
 прокинем порт приложения на хост
 `kubectl port-forward svc/prom 8080`
 проверим, что оно доступно, отдает хелсчек и работает эндпойнт метрик
@@ -74,13 +74,13 @@ https://github.com/lennov/prometheus-test-app.git
 `curl -s http://localhost:8080/actuator/health`
 `curl -s http://localhost:8080/actuator/prometheus`
 
-## Prometheus
+###### Prometheus
 прокинем порт прометея на хост
 `kubectl port-forward prometheus-my-prometheus-operator-prometheus-0 9090`
 
 смотрим, что в таргетах есть наша апишка, если есть, пробуем взять какую-нибудь java-овую метрику, например jvm_memory_used_bytes, убеждаемся что по ней есть данные
 
-## Grafana
+###### Grafana
 прокинем порт графаны на хост
 `kubectl port-forward svc/my-prometheus-operator-grafana 3000:80`
 заходим в графану
