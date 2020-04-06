@@ -62,16 +62,16 @@ https://github.com/lennov/prometheus-test-app.git
 `docker load -i app4.tar`
 
 В своем деплойменте сделать поименованный порт и настройки по комментам  
-пример [prom-deploy.yaml](prom-deploy.yaml)
+пример [prom-deploy.yaml](prom-deploy.yaml)  
 
 применяем  
 `kubectl apply -f prom-deploy.yaml`
 
 в своем сервисе сделать поименованный порт и настройки по комментам  
-пример prom-svc.yaml
+пример [prom-svc.yaml](prom-svc.yaml)  
 
 для своего деплоймента создать файл и настройки по комментам  
-пример: prom-sm.yaml
+пример: [prom-sm.yaml](prom-sm.yaml)  
 
 ## Проверяем
 
@@ -105,6 +105,6 @@ curl -s http://localhost:8080/actuator/prometheus
 `kubectl get secret --namespace default my-prometheus-operator-grafana -o jsonpath="{.data.admin-user}" | base64 --decode ; echo`
 
 Графана уже должна быть настроена, добавляем свой дашборд через импорт, правим под себя  
-пример: grafana-dashboard.json  
+пример: [grafana-dashboard.json](grafana-dashboard.json)    
 
 *опционально можно поставить деплоймент и сервис в другой неймспейс, примеры в /prod-ns*
