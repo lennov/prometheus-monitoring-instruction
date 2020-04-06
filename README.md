@@ -1,4 +1,4 @@
-##Начало
+## Начало
 
 Все это делалось на minikube, для minishift может немного отличаться, но я старался не использовать специфичный API
 базовая инструкция на хабре https://habr.com/ru/company/flant/blog/340728/ уже не совсем актуальна
@@ -42,7 +42,7 @@ thanosrulers.monitoring.coreos.com      2020-04-05T16:04:23Z
 `
 если нет - надо ставить CRD руками
 
-##Deploy
+## Deploy
 опционально можно собрать образ из
 https://github.com/lennov/prometheus-test-app.git
 
@@ -66,7 +66,7 @@ https://github.com/lennov/prometheus-test-app.git
 
 проверяем
 
-##App
+## App
 прокинем порт приложения на хост
 `kubectl port-forward svc/prom 8080`
 проверим, что оно доступно, отдает хелсчек и работает эндпойнт метрик
@@ -74,13 +74,13 @@ https://github.com/lennov/prometheus-test-app.git
 `curl -s http://localhost:8080/actuator/health`
 `curl -s http://localhost:8080/actuator/prometheus`
 
-##Prometheus
+## Prometheus
 прокинем порт прометея на хост
 `kubectl port-forward prometheus-my-prometheus-operator-prometheus-0 9090`
 
 смотрим, что в таргетах есть наша апишка, если есть, пробуем взять какую-нибудь java-овую метрику, например jvm_memory_used_bytes, убеждаемся что по ней есть данные
 
-##Grafana
+## Grafana
 прокинем порт графаны на хост
 `kubectl port-forward svc/my-prometheus-operator-grafana 3000:80`
 заходим в графану
