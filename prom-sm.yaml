@@ -1,0 +1,19 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: prom-sm
+  namespace: default
+  labels:
+    app: prom
+    release: my-prometheus-operator # без нее не работает почему-то
+spec:
+  selector:
+    matchLabels:
+      app: prom # селектор для выбора ресурсов, подлежащих опросу
+  namespaceSelector:
+    matchNames:
+    - default # в каких неймспейсах их искать
+    - prod-ns
+  endpoints:
+    - path: /actuator/prometheus # путь к метрикам
+      port: web # именованый порт, его указвыем в поде и(или) сервисе

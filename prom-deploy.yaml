@@ -1,0 +1,48 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: prom
+  namespace: default # собственно в каком неймспейсе деплоить
+  creationTimestamp: null
+  labels:
+    app: prom # вот по этим лейблам SM(ServiceMonitor) селектит ресурсы, которые нужно опрашивать
+spec:
+  replicas: 3 # это количество реплик на старте
+  selector:
+    matchLabels:
+      app: prom
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: prom
+    spec:
+      containers: # их может быть много
+      - name: prometheus-test-app
+        image: prometheus-test-app:0.0.4 # образ нашей апишки
+        ports:
+          - name: web # поименованный порт пода, нужен для указания в конфиге (SM)ServiceMonitor, т.к. там нельзя указвать цифрой
+            containerPort: 8080
+            protocol: TCP
+        livenessProbe: # в принципе можно и не указывать, но раз уж мы экспозим в апишках хелсчек
+          httpGet:
+            path: /actuator/health # куда идти за хеслчеком
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 60
+          timeoutSeconds: 30
+          periodSeconds: 10
+          successThreshold: 1
+          failureThreshold: 10
+        readinessProbe:
+          httpGet:
+            path: /actuator/health # куда идти за хеслчеком
+            port: 8080
+            scheme: HTTP
+          timeoutSeconds: 1
+          periodSeconds: 10
+          successThreshold: 1
+          failureThreshold: 3
+        resources: {}
+status: {}

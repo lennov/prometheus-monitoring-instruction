@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: prom # вот по этим лейблам SM(ServiceMonitor) селектит ресурсы, которые нужно опрашивать
+  name: prom # лучше, если совпадает с именем деплоймента, так SM не будет задваивать таргеты в прометее
+  namespace: prod-ns
+spec:
+  ports:
+  - name: web # это тоже поименованный порт, скраперу вообщем-то все равно куда ходить в под или в сервис, если по селектору подходит
+    protocol: TCP
+    port: 8080
+    targetPort: web # здесь уже можно использовать поименованный порт
+  selector:
+    app: prom
+  type: ClusterIP # nodePort для OS
+status:
+  loadBalancer: {}
