@@ -62,7 +62,7 @@ https://github.com/lennov/prometheus-test-app.git
 `docker load -i app4.tar`
 
 В своем деплойменте сделать поименованный порт и настройки по комментам  
-пример prom-deploy.yaml
+пример [prom-deploy.yaml](prom-deploy.yaml)
 
 применяем  
 `kubectl apply -f prom-deploy.yaml`
