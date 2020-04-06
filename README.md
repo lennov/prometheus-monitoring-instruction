@@ -32,14 +32,14 @@ runAsUser: 1000070000 - тут конкретное значение нужно 
 `kubectl get customresourcedefinitions`
 
 должно вернуть что-то типа того
-`NAME                                    CREATED AT
-alertmanagers.monitoring.coreos.com     2020-04-05T16:04:23Z
-podmonitors.monitoring.coreos.com       2020-04-05T16:04:23Z
-prometheuses.monitoring.coreos.com      2020-04-05T16:04:23Z
-prometheusrules.monitoring.coreos.com   2020-04-05T16:04:23Z
-servicemonitors.monitoring.coreos.com   2020-04-05T16:04:23Z
-thanosrulers.monitoring.coreos.com      2020-04-05T16:04:23Z
-`
+`NAME                                    CREATED AT`
+`alertmanagers.monitoring.coreos.com     2020-04-05T16:04:23Z`
+`podmonitors.monitoring.coreos.com       2020-04-05T16:04:23Z`
+`prometheuses.monitoring.coreos.com      2020-04-05T16:04:23Z`
+`prometheusrules.monitoring.coreos.com   2020-04-05T16:04:23Z`
+`servicemonitors.monitoring.coreos.com   2020-04-05T16:04:23Z`
+`thanosrulers.monitoring.coreos.com      2020-04-05T16:04:23Z`
+
 если нет - надо ставить CRD руками
 
 ## Deploy
