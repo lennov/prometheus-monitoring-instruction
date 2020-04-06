@@ -63,6 +63,7 @@ kubectl apply -f prom-deploy.yaml
 пример: prom-sm.yaml
 
 проверяем
+
 App
 =========
 прокинем порт приложения на хост
@@ -72,7 +73,6 @@ curl -s http://localhost:8080
 curl -s http://localhost:8080/actuator/health
 curl -s http://localhost:8080/actuator/prometheus
 
-=========
 Prometheus
 =========
 прокинем порт прометея на хост
